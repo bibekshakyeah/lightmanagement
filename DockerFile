@@ -1,0 +1,11 @@
+# Use official OpenJDK 17 image as base
+FROM openjdk:17-jdk-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the compiled Java application JAR file into the container
+COPY target/my-application.jar /app/my-application.jar
+
+# Command to run the Java application
+CMD ["java", "-jar", "my-application.jar"]

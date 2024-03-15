@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lightmanagement</a> &gt; <a href="index.source.html" class="el_package">lightmanagement</a> &gt; <span class="el_source">Room.java</span></div><h1>Room.java</h1><pre class="source lang-java linenums">package lightmanagement;
+
+import java.util.HashMap;
+
+public class Room {
+
+	private int roomID;
+	private int numberOfLights;
+	private HashMap&lt;Integer, Light&gt; lights;
+
+	public int getRoomID() {
+<span class="fc" id="L12">		return roomID;</span>
+	}
+
+	public void setRoomID(int roomID) {
+<span class="fc" id="L16">		this.roomID = roomID;</span>
+<span class="fc" id="L17">	}</span>
+
+	public int getNumberOfLights() {
+<span class="fc" id="L20">		return numberOfLights;</span>
+	}
+
+
+<span class="fc" id="L24">	public Room() {</span>
+<span class="fc" id="L25">		numberOfLights = 0;</span>
+<span class="fc" id="L26">		lights = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L27">	}</span>
+
+	public HashMap&lt;Integer, Light&gt; getLights() {
+<span class="fc" id="L30">		return lights;</span>
+	}
+
+
+	public void addLight(int id, Light light) {
+<span class="fc" id="L35">		numberOfLights += 1;</span>
+<span class="fc" id="L36">		lights.put(id, light);</span>
+<span class="fc" id="L37">	}</span>
+
+	public Light getLight(int lightIndex) {
+<span class="fc" id="L40">		return lights.get(lightIndex);</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L45">		return &quot;Room [roomID=&quot; + roomID + &quot;, numberOfLights=&quot; + numberOfLights + &quot;, lights=&quot; + lights + &quot;]&quot;;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

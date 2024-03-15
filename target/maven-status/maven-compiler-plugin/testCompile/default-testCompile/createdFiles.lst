@@ -1,0 +1,7 @@
+lightmanagement/InvalidLightExceptionTest.class
+lightmanagement/LightTest.class
+lightmanagement/HomeTest.class
+lightmanagement/RoomTest.class
+lightmanagement/InvalidBrightnessTest.class
+lightmanagement/MainTest.class
+lightmanagement/InvalidRoomCountExceptionTest.class

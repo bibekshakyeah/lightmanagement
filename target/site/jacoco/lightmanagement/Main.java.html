@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lightmanagement</a> &gt; <a href="index.source.html" class="el_package">lightmanagement</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package lightmanagement;
+
+import java.util.Scanner;
+
+<span class="nc" id="L5">public class Main {</span>
+
+<span class="fc" id="L7">    private static final StringBuilder MAIN_MENU = new StringBuilder(</span>
+            &quot;******** MAIN MENU ************\n1) View state of Home\n2) Create a room \n3) Modify Room \n&quot;);
+<span class="fc" id="L9">    private static final StringBuilder ROOM_MENU = new StringBuilder(</span>
+            &quot;******** ROOM MENU ************\n1) View state of Room\n2) Modify Room Lighting\n3) Return to Main Menu\n&quot;);
+<span class="fc" id="L11">    private static final StringBuilder LIGHT_MENU = new StringBuilder(</span>
+            &quot;******** LIGHT MENU ************\n1) View state of Lights\n2) Modify Light \n3) Back to Main Menu\n&quot;);
+<span class="fc" id="L13">    private static final StringBuilder UPDATE_LIGHT_MENU = new StringBuilder(</span>
+            &quot;******** UPDATE LIGHT MENU ************\n1) Update Brightness\n2) Update LightMode\n3) Update LightState\n4) Back to Previous Menu\n&quot;);
+<span class="fc" id="L15">    private static final StringBuilder UPDATE_LIGHT_STATE_MENU = new StringBuilder(</span>
+            &quot;******** UPDATE LIGHT STATE MENU ************\n1) OFF\n2) ON\n3) Return Back\n&quot;);
+<span class="fc" id="L17">    private static final StringBuilder UPDATE_LIGHT_MODE_MENU = new StringBuilder(</span>
+            &quot;******** UPDATE LIGHT MODE MENU ************\n1) MORNING\n2) AFTERNOON\n3) EVENING\n4) RETURN\n&quot;);
+<span class="fc" id="L19">    private static final StringBuilder BANNER = new StringBuilder(&quot;*******************************\n&quot;);</span>
+
+    public static void displayBannerHeader() {
+<span class="fc" id="L22">        System.out.println(BANNER.toString());</span>
+<span class="fc" id="L23">    }</span>
+
+    public static void displayHomeBannerOptions() {
+<span class="fc" id="L26">        displayBannerHeader();</span>
+<span class="fc" id="L27">        System.out.println(MAIN_MENU.toString());</span>
+<span class="fc" id="L28">        displayBannerHeader();</span>
+<span class="fc" id="L29">    }</span>
+
+    public static void displayRoomBannerOptions() {
+<span class="fc" id="L32">        displayBannerHeader();</span>
+<span class="fc" id="L33">        System.out.println(ROOM_MENU.toString());</span>
+<span class="fc" id="L34">        displayBannerHeader();</span>
+<span class="fc" id="L35">    }</span>
+
+    public static void displayRoomCreateBannerOptions() {
+<span class="fc" id="L38">        System.out.println(&quot;How Many Lights do you want in the Room? Value should be greater than 0\n&quot;);</span>
+<span class="fc" id="L39">    }</span>
+
+    public static void displayLightBannerOptions() {
+<span class="fc" id="L42">        displayBannerHeader();</span>
+<span class="fc" id="L43">        System.out.println(LIGHT_MENU.toString());</span>
+<span class="fc" id="L44">        displayBannerHeader();</span>
+<span class="fc" id="L45">    }</span>
+
+    public static void displayLightUpdateBanner() {
+<span class="fc" id="L48">        displayBannerHeader();</span>
+<span class="fc" id="L49">        System.out.println(UPDATE_LIGHT_MENU.toString());</span>
+<span class="fc" id="L50">        displayBannerHeader();</span>
+<span class="fc" id="L51">    }</span>
+
+    private static void displayLightStateBanner() {
+<span class="nc" id="L54">        displayBannerHeader();</span>
+<span class="nc" id="L55">        System.out.println(UPDATE_LIGHT_STATE_MENU.toString());</span>
+<span class="nc" id="L56">        displayBannerHeader();</span>
+<span class="nc" id="L57">    }</span>
+
+    private static void displayLightModeBannerOptions() {
+<span class="nc" id="L60">        displayBannerHeader();</span>
+<span class="nc" id="L61">        System.out.println(UPDATE_LIGHT_MODE_MENU.toString());</span>
+
+<span class="nc" id="L63">        displayBannerHeader();</span>
+<span class="nc" id="L64">    }</span>
+
+    public static int readInput(Scanner scanner) {
+<span class="fc" id="L67">        int x = 0;</span>
+        try {
+<span class="fc" id="L69">            x = Integer.parseInt(scanner.nextLine());</span>
+
+<span class="fc" id="L71">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L72">            System.out.println(&quot;Please enter a valid integer option&quot;);</span>
+<span class="fc" id="L73">        }</span>
+<span class="fc" id="L74">        return x;</span>
+    }
+
+    public static void main(String[] args) {
+
+<span class="fc" id="L79">        Home home = new Home();</span>
+<span class="fc" id="L80">        try (Scanner scanner = new Scanner(System.in)) {</span>
+<span class="fc" id="L81">            int userInput = 0;</span>
+<span class="fc" id="L82">            System.out.println(&quot;Home Lighting ManageMent System&quot;);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            while (userInput != -1) {</span>
+<span class="fc" id="L84">                displayHomeBannerOptions();</span>
+                do {
+<span class="fc" id="L86">                    userInput = readInput(scanner);</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">                } while (userInput == 0);</span>
+
+                try {
+<span class="fc" id="L90">                    homeManagement(home, userInput, scanner);</span>
+<span class="nc" id="L91">                } catch (InvalidRoomCountException e) {</span>
+<span class="nc" id="L92">                    System.out.println(e.getMessage());</span>
+<span class="pc" id="L93">                }</span>
+            }
+
+        }
+
+<span class="fc" id="L98">    }</span>
+
+    static void homeManagement(Home home, int userInput, Scanner scanner) throws InvalidRoomCountException {
+<span class="fc bfc" id="L101" title="All 4 branches covered.">        switch (userInput) {</span>
+<span class="fc" id="L102">            case 1 -&gt; System.out.println(home);</span>
+<span class="fc" id="L103">            case 2 -&gt; home.addRoom(createRoom(scanner));</span>
+            case 3 -&gt; {
+<span class="fc" id="L105">                System.out.println(&quot;Which Room Do you want to update&quot;);</span>
+<span class="fc" id="L106">                int room = readInput(scanner);</span>
+<span class="fc" id="L107">                manageRoom(scanner, room, home);</span>
+<span class="fc" id="L108">            }</span>
+<span class="fc" id="L109">            default -&gt; System.out.println(&quot;Invalid Option Selected&quot;);</span>
+        }
+
+<span class="fc" id="L112">    }</span>
+
+    static void manageRoom(Scanner scanner, int roomId, Home home) throws InvalidRoomCountException {
+        try {
+<span class="fc" id="L116">            int roomModification = 0;</span>
+<span class="fc" id="L117">            Room room = home.getRooms().get(roomId - 1);</span>
+
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">            if (home.getRoomCount() &gt; 0) {</span>
+
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                while (roomModification != 3) {</span>
+<span class="fc" id="L122">                    displayRoomBannerOptions();</span>
+<span class="fc" id="L123">                    roomModification = readInput(scanner);</span>
+<span class="fc bfc" id="L124" title="All 3 branches covered.">                    switch (roomModification) {</span>
+<span class="fc" id="L125">                        case 1 -&gt; System.out.println(room);</span>
+                        case 2 -&gt; {
+<span class="fc" id="L127">                            System.out.println(&quot;Which Light do you want to update&quot;);</span>
+<span class="fc" id="L128">                            int lightId = readInput(scanner);</span>
+                            try {
+<span class="nc" id="L130">                                updateRoomLight(room, lightId, scanner);</span>
+<span class="fc" id="L131">                            } catch (InvalidLightException e) {</span>
+<span class="fc" id="L132">                                System.out.println(e.getMessage());</span>
+<span class="nc" id="L133">                            }</span>
+<span class="fc" id="L134">                        }</span>
+                    }
+                }
+
+            } else
+<span class="nc" id="L139">                throw new InvalidRoomCountException(&quot;Please create a room before proceeding&quot;);</span>
+
+<span class="fc" id="L141">        } catch (IndexOutOfBoundsException e) {</span>
+<span class="fc" id="L142">            System.out.println(&quot;Room does not exist. Please enter a room id from the below &quot;);</span>
+<span class="fc" id="L143">            System.out.println(home);</span>
+<span class="fc" id="L144">        }</span>
+
+<span class="fc" id="L146">    }</span>
+
+    private static Room createRoom(Scanner scanner) {
+<span class="fc" id="L149">        Room room = new Room();</span>
+<span class="fc" id="L150">        displayRoomCreateBannerOptions();</span>
+<span class="fc" id="L151">        int numberOfLights = -1;</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">        while (numberOfLights &lt; 0) {</span>
+<span class="fc" id="L153">            numberOfLights = readInput(scanner);</span>
+        }
+
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        for (int i = 0; i &lt; numberOfLights; i++) {</span>
+<span class="fc" id="L157">            room.addLight(i + 1, new Light(LightMode.MORNING, LightState.OFF));</span>
+        }
+<span class="fc" id="L159">        return room;</span>
+    }
+
+    private static void updateRoomLight(Room room, int lightId, Scanner scanner) throws InvalidLightException {
+<span class="fc" id="L163">        int lightModification = 0;</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">        if (room.getLights().containsKey(lightId)) {</span>
+
+<span class="nc bnc" id="L166" title="All 2 branches missed.">            while (lightModification != 3) {</span>
+<span class="nc" id="L167">                displayLightBannerOptions();</span>
+<span class="nc" id="L168">                lightModification = readInput(scanner);</span>
+<span class="nc" id="L169">                Light light = room.getLight(lightId);</span>
+<span class="nc bnc" id="L170" title="All 3 branches missed.">                switch (lightModification) {</span>
+<span class="nc" id="L171">                    case 1 -&gt; System.out.println(room.getLights());</span>
+<span class="nc" id="L172">                    case 2 -&gt; updateLight(light, scanner);</span>
+                    case 3 -&gt; {
+                    }
+                }
+<span class="nc" id="L176">            }</span>
+
+        } else {
+<span class="fc" id="L179">            throw new InvalidLightException(&quot;Light Does not exist&quot;);</span>
+        }
+
+<span class="nc" id="L182">    }</span>
+
+    private static void updateLight(Light light, Scanner scanner) {
+<span class="nc" id="L185">        int lightModification = 0;</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        while (lightModification != 4) {</span>
+<span class="nc" id="L187">            displayLightUpdateBanner();</span>
+<span class="nc" id="L188">            lightModification = readInput(scanner);</span>
+<span class="nc bnc" id="L189" title="All 5 branches missed.">            switch (lightModification) {</span>
+                case 1:
+<span class="nc" id="L191">                    updateLightBrightness(light, scanner);</span>
+<span class="nc" id="L192">                    break;</span>
+                case 2:
+<span class="nc" id="L194">                    updateLightModeWorker(light, scanner);</span>
+<span class="nc" id="L195">                    break;</span>
+                case 3:
+<span class="nc" id="L197">                    updateLightStateWorker(light, scanner);</span>
+<span class="nc" id="L198">                    break;</span>
+                case 4:
+<span class="nc" id="L200">                    break;</span>
+                default:
+<span class="nc" id="L202">                    System.out.println(&quot;Please input correct value from Menu&quot;);</span>
+            }
+
+        }
+
+<span class="nc" id="L207">    }</span>
+
+    private static void updateLightBrightness(Light light, Scanner scanner) {
+<span class="nc" id="L210">        System.out.println(&quot;Enter Brightness&quot;);</span>
+        try {
+<span class="nc" id="L212">            light.setLightBrightness(readInput(scanner));</span>
+<span class="nc" id="L213">        } catch (InvalidBrightness e) {</span>
+<span class="nc" id="L214">            System.out.println(e.getMessage());</span>
+            ;
+<span class="nc" id="L216">        }</span>
+
+<span class="nc" id="L218">    }</span>
+
+    private static void updateLightModeWorker(Light light, Scanner scanner) {
+<span class="nc" id="L221">        System.out.println(&quot;update lightmode&quot;);</span>
+<span class="nc" id="L222">        int lightMode = 0;</span>
+<span class="nc" id="L223">        boolean isModeUpdated = false;</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">        while (!isModeUpdated) {</span>
+<span class="nc" id="L225">            displayLightModeBannerOptions();</span>
+<span class="nc" id="L226">            lightMode = readInput(scanner);</span>
+<span class="nc bnc" id="L227" title="All 2 branches missed.">            if (lightMode == 4)</span>
+<span class="nc" id="L228">                break;</span>
+<span class="nc" id="L229">            isModeUpdated = updateMode(lightMode, light);</span>
+
+        }
+<span class="nc" id="L232">    }</span>
+
+    private static void updateLightStateWorker(Light light, Scanner scanner) {
+<span class="nc" id="L235">        int lightState = 0;</span>
+<span class="nc" id="L236">        boolean isStateUpdated = false;</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">        while (!isStateUpdated) {</span>
+<span class="nc" id="L238">            displayLightStateBanner();</span>
+<span class="nc" id="L239">            lightState = readInput(scanner);</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">            if (lightState == 3)</span>
+<span class="nc" id="L241">                break;</span>
+<span class="nc" id="L242">            isStateUpdated = updateState(lightState, light);</span>
+        }
+<span class="nc" id="L244">    }</span>
+
+    private static boolean updateState(int lightState, Light light) {
+<span class="nc" id="L247">        boolean isUpdated = false;</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">        if (light != null) {</span>
+<span class="nc bnc" id="L249" title="All 3 branches missed.">            switch (lightState) {</span>
+                case 1:
+<span class="nc" id="L251">                    light.setLightState(LightState.OFF);</span>
+<span class="nc" id="L252">                    isUpdated = true;</span>
+<span class="nc" id="L253">                    break;</span>
+                case 2:
+<span class="nc" id="L255">                    light.setLightState(LightState.ON);</span>
+<span class="nc" id="L256">                    isUpdated = true;</span>
+<span class="nc" id="L257">                    break;</span>
+                default:
+<span class="nc" id="L259">                    System.out.println(&quot;Please Enter Correct Input &quot;);</span>
+            }
+        }
+<span class="nc" id="L262">        return isUpdated;</span>
+
+    }
+
+    private static boolean updateMode(int lightMode, Light light) {
+<span class="nc" id="L267">        boolean isUpdated = false;</span>
+<span class="nc bnc" id="L268" title="All 4 branches missed.">        switch (lightMode) {</span>
+            case 1:
+<span class="nc" id="L270">                light.setLightMode(LightMode.MORNING);</span>
+<span class="nc" id="L271">                isUpdated = true;</span>
+<span class="nc" id="L272">                break;</span>
+            case 2:
+<span class="nc" id="L274">                light.setLightMode(LightMode.AFTERNOON);</span>
+<span class="nc" id="L275">                isUpdated = true;</span>
+<span class="nc" id="L276">                break;</span>
+            case 3:
+<span class="nc" id="L278">                light.setLightMode(LightMode.EVENING);</span>
+<span class="nc" id="L279">                isUpdated = true;</span>
+<span class="nc" id="L280">                break;</span>
+            default:
+<span class="nc" id="L282">                System.out.println(&quot;Please Enter Correct Input &quot;);</span>
+        }
+<span class="nc" id="L284">        return isUpdated;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

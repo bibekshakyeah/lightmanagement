@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+lightmanagement,lightmanagement,LightState,0,28,0,0,0,6,0,3,0,3
+lightmanagement,lightmanagement,InvalidLightException,0,4,0,0,0,2,0,1,0,1
+lightmanagement,lightmanagement,InvalidRoomCountException,0,4,0,0,0,2,0,1,0,1
+lightmanagement,lightmanagement,Home,0,37,0,0,0,11,0,5,0,5
+lightmanagement,lightmanagement,LightMode,0,35,0,0,0,6,0,3,0,3
+lightmanagement,lightmanagement,Light,0,56,0,4,0,19,0,10,0,8
+lightmanagement,lightmanagement,Main,193,233,32,18,86,82,30,22,9,13
+lightmanagement,lightmanagement,Room,0,53,0,0,0,14,0,8,0,8
+lightmanagement,lightmanagement,InvalidBrightness,0,10,0,0,0,4,0,3,0,3
