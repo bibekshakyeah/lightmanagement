@@ -20,10 +20,10 @@ This project is a light management system designed to control and manage lights 
 2. Navigate to the project directory.
 3. Run the following commands:
 
-`mvn clean install
+```mvn clean install
 java -jar target/lightmanagement-0.0.1-SNAPSHOT.jar
 
-`
+```
 
 
 ### Running with Docker
@@ -31,12 +31,12 @@ java -jar target/lightmanagement-0.0.1-SNAPSHOT.jar
 2. Navigate to the project directory.
 3. Build the Docker image using the following command:
 
-`
+```
 docker build -t lightmanagement .
 
-docker run -it --rm lightmanagement`
+docker run -it --rm lightmanagement
 
-
+```
 
 ## Design Choices
 - **Java:** Java was chosen as the primary programming language due to its platform independence and robust ecosystem.
